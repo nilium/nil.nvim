@@ -12,12 +12,24 @@ local function cd_to_buf(local_only, bang)
   vim.cmd({ cmd = cmd, args = { dir } })
 end
 
-local function setup(_opts)
-  vim.api.nvim_create_user_command('CD', 'lua require("cdbuf").cd_to_buf(false, "<bang>")', { bang = true })
-  vim.api.nvim_create_user_command('LCD', 'lua CDToBuf(true, "<bang>")', { bang = true })
+local function init()
+  if vim.g.global_cd == nil then
+    vim.g.global_cd = false
+  end
+
+  vim.api.nvim_create_user_command(
+    'CD',
+    'lua require("cdbuf").cd_to_buf(false, "<bang>")',
+    { bang = true, force = true }
+  )
+  vim.api.nvim_create_user_command(
+    'LCD',
+    'lua require("cdbuf").cd_to_buf(true, "<bang>")',
+    { bang = true, force = true }
+  )
 end
 
 return {
   cd_to_buf = cd_to_buf,
-  setup = setup,
+  init = init,
 }

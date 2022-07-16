@@ -11,11 +11,7 @@ local function callback()
   stamp(vim.v.register)
 end
 
-local function bind(mode, lhs)
-  vim.api.nvim_set_keymap(mode, lhs, "", { callback = callback })
-end
-
-local function setup(opts)
+local function init()
   vim.api.nvim_create_user_command(
     'Stamp',
     'lua require("stamp").stamp("<register>")',
@@ -26,6 +22,5 @@ end
 return {
   stamp = stamp,
   callback = callback,
-  bind = bind,
-  setup = setup,
+  init = init,
 }
