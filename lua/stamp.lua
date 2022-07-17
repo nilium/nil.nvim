@@ -27,7 +27,7 @@ end
 local function init()
   vim.api.nvim_create_user_command(
     'Stamp',
-    'lua require("stamp").stamp("<register>")',
+    'lua require("stamp").stamp(vim.v.register)',
     { register = true }
   )
 end
