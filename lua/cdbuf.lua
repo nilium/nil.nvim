@@ -36,7 +36,7 @@ local function cd_to_buf(force_scope)
 	vim.cmd { cmd = cmd, args = { dir } }
 end
 
-local function init()
+local function init(_options)
 	if vim.g.global_cd == nil then
 		vim.g.global_cd = false
 	end
@@ -61,5 +61,4 @@ end
 return {
 	cd_to_buf = cd_to_buf,
 	init = init,
-	setup = setup,
 }
