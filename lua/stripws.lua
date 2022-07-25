@@ -30,7 +30,7 @@ function M.strip_trailing_ws(force)
   vim.fn.cursor(pos[2], pos[3], pos[4])
 end
 
-function M.init(options)
+function M.setup(options)
   local new_options = vim.tbl_extend('force', {}, default_options, options or {})
   new_options.ignore = new_options.ignore or {}
   config = new_options
@@ -50,5 +50,7 @@ function M.init(options)
 
   return M
 end
+
+M.init = M.setup, -- Deprecated.
 
 return M

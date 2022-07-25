@@ -24,7 +24,7 @@ local function callback()
   stamp(vim.v.register)
 end
 
-local function init(_options)
+local function setup(_options)
   vim.api.nvim_create_user_command(
     'Stamp',
     'lua require("stamp").stamp(vim.v.register)',
@@ -35,5 +35,6 @@ end
 return {
   stamp = stamp,
   callback = callback,
-  init = init,
+  setup = setup,
+  init = setup, -- Deprecated.
 }
