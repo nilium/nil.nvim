@@ -51,6 +51,6 @@ function M.setup(options)
   return M
 end
 
-M.init = M.setup, -- Deprecated.
+M.init = M.setup -- Deprecated.
 
 return M
